@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript">
+    // List of valid paths
+    var validPaths = ['/', '/about', '/movie/', '/watch-list', '/favourites'];
+    var path = window.location.pathname;
+
+    // Check if the path is valid
+    var isValidPath = validPaths.some(function(p) {
+      return path === p || path.startsWith(p + '/');
+    });
+
+    // Redirect only if the path is valid
+    if (isValidPath) {
+      window.location.href = 'https://thuang79.github.io/tracy-ayesha-movie-app/#' + path;
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
