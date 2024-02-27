@@ -1,0 +1,45 @@
+// Button Main Nav Styles
+
+@use '../base/settings' as *;
+@use '../utilities/functions' as *;
+@use '../utilities/mixins' as *;
+
+.btn-main-nav {
+    @include flatten;
+    border: none;
+    background: none;
+    margin-right: em(12);
+  
+    &:hover {
+      cursor: pointer;
+    }
+  
+    .line {
+      width: 50px;
+      height: 5px;
+      background-color: $white;
+      display: block;
+      margin: 8px auto;
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+      &.open {
+      .line {
+        &:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+  
+        &:nth-child(2) {
+          opacity: 0;
+        }
+  
+        &:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    }
+  
+    @media (min-width: em(800)) {
+      display: none;
+    }
+  }
+  

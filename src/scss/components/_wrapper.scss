@@ -1,0 +1,13 @@
+// Wrapper
+
+@use "../base/settings" as *;
+@use "../utilities/mixins" as *;
+@use "../utilities/functions" as *;
+
+.wrapper {
+  max-width: 100%;
+  min-height: auto;
+  background-color: $bgcolor;
+  margin: 0 auto;
+}
+

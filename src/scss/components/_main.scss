@@ -1,0 +1,42 @@
+// Main
+
+@use "../base/settings" as *;
+
+main {
+  margin-left: 40px;
+  background-color: $bgcolor;
+  min-height: 50vh;
+  color: white;
+
+  h2 {
+    font-family: $headingFont;
+    color: $neon-blue;
+    font-size: 38px;
+    margin-top: 70px;
+    margin-bottom: 40px;
+  }
+
+  article {
+    color: white;
+    font-size: 25px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  p {
+    margin-bottom: 60px;
+  }
+
+  .tmdb-msg {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 800px) {
+  main p{
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}

@@ -1,0 +1,19 @@
+// App Style Settings
+
+@use "../utilities/functions" as *;
+
+// Colors
+$grey: #e1e1e1;
+$white: #ffffff;
+$black: #000000;
+$bgcolor:#000916;
+$neon-green: #04fd8b;
+$neon-blue: #0079e4;
+
+
+// Type
+$bodyFont: "Roboto", sans-serif;
+$headingFont: "Alatsi", sans-serif;
+
+// Layout (footer)
+$section-padding: em(16) em(20);

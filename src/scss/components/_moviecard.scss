@@ -1,0 +1,94 @@
+// Movie card component styles
+
+@use "../base/settings" as *;
+
+/* Style the movie card container */
+.movie-card {
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+/* Style the odd movie cards */
+.movie-card:nth-child(odd) {
+  border: 2px solid $neon-green;
+  box-shadow: 2px 4px 15px $neon-green;
+}
+
+/* Style the even movie cards */
+.movie-card:nth-child(even) {
+  border: 2px solid $neon-blue;
+  box-shadow: 2px 4px 15px $neon-blue;
+}
+
+/* Style the movie image */
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Style the movie info container */
+.movie-info {
+  text-align: left;
+  color: white;
+}
+
+/* Style the buttons */
+.movie-info button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 17px;
+  margin-right: 10px;
+  font-size: 18px;
+  color: #b3b3b3;
+}
+
+/* Style the more info button */
+.movie-info button.more-info {
+  border: 1px solid $neon-green;
+  color: white;
+  padding: 5px 50px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+/* Style the FontAwesome icons */
+.movie-info button .fa-icon {
+  margin-right: 10px;
+}
+
+.movie-info h3 {
+  font-family: $headingFont;
+  font-size: 30px;
+  margin: 0px;
+}
+
+.movie-info p {
+  font-size: 18px;
+  font-family: $bodyFont;
+}
+
+/* Mobile view, one movie card per row */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 50px;
+  padding: 30px;
+}
+
+/* Tablet view, two movie cards per row */
+@media (min-width: 600px) {
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop view, three movie cards per row */
+@media (min-width: 800px) {
+  .movies-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
