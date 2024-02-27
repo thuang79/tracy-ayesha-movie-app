@@ -13,7 +13,7 @@ import PageAbout from "../pages/PageAbout";
 import PageMovieDetails from "../pages/PageMovieDetails";
 import PageFavourites from "../pages/PageFavourites";
 import PageWatchList from "../pages/PageWatchList";
-// import PageNotFound from "../pages/PageNotFound";
+import PageNotFound from "../pages/PageNotFound";
 
 
 function AppRouter() {
@@ -27,7 +27,7 @@ function AppRouter() {
           <Route path="/movie/:id" element={<PageMovieDetails />} />
           <Route path="/watch-list" element={<PageWatchList />} />
           <Route path="/favourites" element={<PageFavourites />} />
-          {/* <Route path="*" element={<PageNotFound />} /> */}
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </div>
