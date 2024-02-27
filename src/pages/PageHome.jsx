@@ -23,24 +23,37 @@ const PageHome = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${selectedCategory}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`
-        );
-        if (!response.ok) {
+        const url = `https://api.themoviedb.org/3/movie/${selectedCategory}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
+        const response1 = await fetch(url);
+        if (!response1.ok) {
           throw new Error('Failed to fetch data');
         }
-        const data = await response.json();
-        const moviesData = data.results.slice(0, 12).map((movie) => ({
+        // Get the first 20 movies (api default is 20 movies per page, so can't just slice it to 24 movies)
+        const data1 = await response1.json();
+        const moviesData1 = data1.results.slice(0, 20).map((movie) => ({
           ...movie,
           overview: truncateDescription(movie.overview, 150),
-        })); // Limit to 12 movies
-        setMovies(moviesData);
+        }));
+        
+        // Get the next 4 movies (so we have to fetch the second page of the api response)
+        const response2 = await fetch(url + '&page=2');
+        if (!response2.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data2 = await response2.json();
+        const moviesData2 = data2.results.slice(0, 4).map((movie) => ({
+          ...movie,
+          overview: truncateDescription(movie.overview, 150),
+        }));
+    
+        setMovies([...moviesData1, ...moviesData2]);
         setLoading(false);
       } catch (error) {
         setError(error.message);
         setLoading(false);
       }
     };
+    
 
     fetchMovies();
   }, [selectedCategory]);
