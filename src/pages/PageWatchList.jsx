@@ -7,7 +7,7 @@ import { fetchMoviesByIds, truncateDescription } from '../utilities/movieUtils';
 const PageWatchList = () => {
   const [watchListMovies, setWatchListMovies] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,8 +16,8 @@ const PageWatchList = () => {
       try {
         const storedWatchList = JSON.parse(localStorage.getItem('watchlist') || '[]');
         setWatchlist(storedWatchList);
-        const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-        setFavorites(storedFavorites);
+        const storedFavourites = JSON.parse(localStorage.getItem('favourites') || '[]');
+        setFavourites(storedFavourites);
         const moviesData = await fetchMoviesByIds(storedWatchList, truncateDescription);
         setWatchListMovies(moviesData);
       } catch (error) {
@@ -32,11 +32,11 @@ const PageWatchList = () => {
 
   // Add or remove movies from favourites and watchlist
   const toggleFavourite = (movieId) => {
-    const updatedFavorites = favorites.includes(movieId)
-      ? favorites.filter((id) => id !== movieId)
-      : [...favorites, movieId];
-    setFavorites(updatedFavorites);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    const updatedFavourites = favourites.includes(movieId)
+      ? favourites.filter((id) => id !== movieId)
+      : [...favourites, movieId];
+    setFavourites(updatedFavourites);
+    localStorage.setItem('favourites', JSON.stringify(updatedFavourites));
   };
 
   const toggleWatchlist = (movieId) => {
@@ -64,7 +64,7 @@ const PageWatchList = () => {
               key={movie.id}
               movie={movie}
               onToggleFavourite={toggleFavourite}
-              isFavourite={favorites.includes(movie.id)}
+              isFavourite={favourites.includes(movie.id)}
               onToggleWatchlist={toggleWatchlist}
               isWatchlist={watchlist.includes(movie.id)}
             />
